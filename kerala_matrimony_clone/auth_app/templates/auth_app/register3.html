@@ -1,0 +1,148 @@
+
+
+{% extends 'auth_app/base.html' %}
+{% load static %}
+
+{% block title %} Kerala Matrimony - The No. 1 Matrimony Site for Keralas - KeralaMatrimony.com {% endblock %}
+
+{% block content %}
+
+<div>
+    
+    <div class="h-20 border-bottom-2 mb-2 flex mt-5" >
+        <div class="w-6/12 flex items-center px-8 ">
+            <div>
+                <p class="text-light text-small">From Matrimony.com Group</p>
+                <img class="w-48 h-12" src="{% static 'images/icon-full.png' %}">
+            </div>
+        </div>
+       
+    </div>
+ 
+    
+    <div class="bg-white w-full mt-8 flex">
+        
+
+        <div class="w-2/4 h-11/12 mx-3">
+            <img src="{% static 'images/register_2.png' %}"/>
+        </div>
+
+        <div class="w-2/4 h-11/12 mx-3">
+            <p class="text-2xl text-black mb-10">Religion details can help us find the right matc</p>
+
+           
+            <div class="mb-4 flex mt-3" >
+                <label class="w-5/12 text-black font-light text-2xl">Division</label>
+               <div class="w-full px-12">
+                <select id="registerSelectDivison" class="bg-white text-black font-normal  w-full text-start py-3 rounded-xl border-2 border-gray-300 px-3">
+                   
+                    <option value=""> Select Division</option>
+                    <option value="Latin Catholic" >Latin Catholic</option>
+                    <option value="Lutheran" >Lutheran</option>
+                    <option value="Malankara"> Malankara </option>
+                    <option value="Marthoma"> Marthoma </option>
+              >
+
+                </select>
+               </div>
+            </div>
+            
+            <div class="mb-4 flex mt-3" >
+                <label class="w-5/12 text-black font-light text-2xl">Caste (Optional) </label>
+                <input type="text" class="w-9/12" id="caste"/>
+            </div>
+
+            <p class="text-red-500 text-center font-bold hidden" id="registerFillValues">Fill all form fields</p>
+            <p class="text-red-500 text-center font-bold hidden" id="registerError">Invalid Credentials.</p>
+            <div  class="flex justify-center">
+
+                <button id='loginBtn' class="w-2/4 bg-[#f48323] text-white p-3 my-4 rounded-2xl mx-auto">Continue</button>
+            </div>
+
+        </div>
+
+        
+    </div>
+
+    <div class="bg-white my-10">
+        <p class="text-2xl font-light text-center">Copyright © 2024. All rights reserved.</p>
+    </div>
+    
+      
+      Main modal
+      <div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full" style="z-index:100;">
+          <div class="relative p-4 w-full max-w-2xl max-h-full">
+              <!-- Modal content -->
+              <div class="relative bg-white rounded-lg shadow w-[300px] ">
+                  <!-- Modal header -->
+                  <div class="flex items-center justify-center p-4 md:p-5 border-b rounded-t dark:border-gray-600 w-[300px] ">
+                     <div class="flex">
+
+                    
+                      <p class="text-black text-center text-2xl font-semibold px-48">Login</p>
+                      <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 white" data-modal-hide="default-modal">
+                          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                          </svg>
+                          <!-- <span class="sr-only">Close modal</span> -->
+                      </button>
+                    </div>
+                  </div>
+                  <!-- Modal body -->
+                  <div class="p-4 md:p-5 space-y-4">
+                    <input class="w-full px-3 text-black mt-4 h-12  border-2 border-gray-400 rounded-xl" type="text" id="loginName" placeholder="Enter Name"/>
+                    <input class="w-full px-3 text-black mt-4 h-12 border-2 border-gray-400 rounded-xl" type="text" id="loginPassword" placeholder="Enter Password"/>
+                <p class="text-red-500 text-center font-bold hidden" id="loginFillValues">Fill all form fields</p>
+                <p class="text-red-500 text-center font-bold hidden" id="loginError">Invalid Credentials.</p>
+                
+                  </div>
+                 
+              </div>
+          </div>
+      </div>
+</div>
+
+
+<script>document.addEventListener('DOMContentLoaded', () => {
+    console.log('fully loaded2');
+    const loginBtn = document.querySelector('#loginBtn');
+
+    
+    const storedUserData = localStorage.getItem('newUserData');
+    let userData = {};
+    
+    if (storedUserData) {
+        userData = JSON.parse(storedUserData);
+        console.log('User data retrieved from localStorage', userData);
+    }else{
+        location.href='/';
+    }
+
+
+    loginBtn.addEventListener('click', (evt) => {
+        evt.preventDefault();
+        const selectValueDivison = document.querySelector('#registerSelectDivison')
+        const fillUpValuesPara = document.querySelector('#registerFillValues');
+        fillUpValuesPara.classList.add('hidden');
+        const caste = document.querySelector('#caste').value;
+        
+        if (selectValueDivison.value == '') {
+            fillUpValuesPara.classList.remove('hidden');
+            return;
+        }
+
+        userData.caste = caste;
+    userData.division = selectValueDivison.value;
+
+    // Save the updated user data back to localStorage
+    localStorage.setItem('newUserData', JSON.stringify(userData));
+    console.log('User data updated in localStorage', userData);
+    location.href = '/register4';
+    });
+
+
+});
+
+</script>
+
+{% endblock %}

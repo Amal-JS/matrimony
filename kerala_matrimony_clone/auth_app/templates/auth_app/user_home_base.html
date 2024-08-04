@@ -1,0 +1,230 @@
+{% extends 'auth_app/base.html' %}
+{% load static %}
+
+{% block title %} Home - Matrimony {% endblock %}
+
+{% block content %}
+
+<div>
+    <div class="h-20 border-bottom-2 mb-2 flex mt-5" >
+        <div class="w-5/12 flex items-center px-8 ">
+            <div>
+                <p class="text-light text-small">From Matrimony.com Group</p>
+                <img class="w-48 h-12" src="{% static 'images/icon-full.png' %}">
+            </div>
+        </div>
+        <div class="w-7/12 flex items-center">
+            <div class="flex items-center mx-2">
+                <img src="{% static 'images/header_nav/1.svg' %}" class="w-8 h-8"/>
+                <p class="text-black text-xl">Home</p>
+            </div>
+            <div class="flex items-center mx-2">
+                <img src="{% static 'images/header_nav/2.svg' %}" class="w-8 h-8"/>
+                <p class="text-black text-xl">Matches</p>
+            </div>
+            <div class="flex items-center mx-2">
+                <img src="{% static 'images/header_nav/3.svg' %}" class="w-8 h-8"/>
+                <p class="text-black text-xl">Mailbox</p>
+            </div>
+            <div class="flex items-center mx-2">
+                <img src="{% static 'images/header_nav/4.svg' %}" class="w-8 h-8"/>
+                <p class="text-black text-xl">Chat</p>
+            </div>
+            <div class="flex items-center mx-2">
+                <img src="{% static 'images/header_nav/5.svg' %}" class="w-8 h-8"/>
+                <p class="text-black text-xl">Search</p>
+            </div>
+            <div class="flex items-center mx-2">
+                <img src="{% static 'images/header_nav/6.svg' %}" class="w-8 h-8"/>
+                <p class="text-black text-xl">Notification</p>
+            </div>
+
+
+            <div class="flex items-center mx-2">
+                <img src="{% if request.user.profile_picture %}{{ request.user.profile_picture.url }}{% else %}{% static '/images/default_user.jpeg' %}{% endif %}" 
+           />
+            </div>
+            <a class="bg-[#f48323] text-white rounded-2xl p-3 w-24 text-center" href="{% url 'logout_user' %}">Logout</a>
+        </div>
+    </div>
+
+    <div class="flex h-full">
+        <div class="w-3/12 border-r-4 border-r-gray-400">
+            <div class="mt-48 ">
+                <div class="flex justify-center">
+
+                    <img src="{{ request.user.profile_picture.url }}"   style="border-radius: 50%" class="w-36 h-36"/>
+                </div>
+                <p class="font-light mt-3 text-xl text-center ">Good Afternoon!</p>
+                <p class="font-bold mt-3 text-xl text-center ">{{request.user.username}}</p>
+                <p class="font-light mt-3 text-xl text-center ">EP9292929</p>
+                <p class="font-semibold mt-3 text-xl text-center ">Membership : Free</p>
+                <p class="font-light mt-3 text-base text-center ">Become a paid member now.</p>
+                <p class="text-center my-3">
+
+                    <a href="" class="p-2 rounded-2xl text-white bg-[#f48323] ">Upgrade</a>
+                </p>
+
+            </div>
+            <div class="mt-16">
+          
+                <a href="{% url 'edit_profile' request.user.id %}">
+                <div class="flex justify-start pl-16 items-center my-2 ">
+                    <img src="{% static 'images/user_home/1.svg' %}" class="w-12 h-12"/>
+                    <p class="mx-2 text-2xl font-normal text-black">Edit Profile</p>
+                </div>
+            </a> 
+            <a href="">
+                <div class="flex justify-start pl-16 items-center my-2 ">
+                    <img src="{% static 'images/user_home/2.svg' %}" class="w-12 h-12"/>
+                    <p class="mx-2 text-2xl font-normal text-black">Edit Preferences</p>
+                </div>
+            </a> 
+            <a href="">
+                <div class="flex justify-start pl-16 items-center my-2 ">
+                    <img src="{% static 'images/user_home/3.svg' %}" class="w-12 h-12"/>
+                    <p class="mx-2 text-2xl font-normal text-black">Generate Horoscope</p>
+                </div>
+            </a> 
+            <a href="">
+                <div class="flex justify-start pl-16 items-center my-2 ">
+                    <img src="{% static 'images/user_home/4.svg' %}" class="w-12 h-12"/>
+                    <p class="mx-2 text-2xl font-normal text-black">Verify your Profile</p>
+                </div>
+            </a> 
+            <a href="">
+                <div class="flex justify-start pl-16 items-center my-2 ">
+                    <img src="{% static 'images/user_home/5.svg' %}" class="w-12 h-12"/>
+                    <p class="mx-2 text-2xl font-normal text-black">Settings</p>
+                </div>
+            </a> 
+            <a href="">
+                <div class="flex justify-start pl-16 items-center my-2 ">
+                    <img src="{% static 'images/user_home/6.svg' %}" class="w-12 h-12"/>
+                    <p class="mx-2 text-2xl font-normal text-black">Help</p>
+                </div>
+            </a> 
+            <a href="">
+                <div class="flex justify-start pl-16 items-center my-2 ">
+                    <img src="{% static 'images/user_home/7.svg' %}" class="w-12 h-12"/>
+                    <p class="mx-2 text-2xl font-normal text-black">Safe Matrimony<a href="">
+                </div>
+            </a> 
+        <a>
+            <div class="flex justify-start pl-16 items-center my-2 ">
+                <img src="{% static 'images/user_home/1.svg' %}" class="w-12 h-12"/>
+                <p class="mx-2 text-2xl font-normal text-black">Success Stories</p>
+           
+                </div>
+            </a> 
+
+            </div>
+        </div>
+        <div class="w-9/12 p-4">
+            {% block main_content %}
+            
+            {% endblock %}
+        </div>
+    </div>
+
+    <div class="px-12 border-t-4 border-t-gray-400 mx-12 bg-white flex mb-10 mt-10">
+        <div class="mt-8 w-3/12">
+            <div class="flex items-center">
+
+                <img src="{% static 'images/user_home/footericon.webp' %}" class="w-16 h-16"/>
+            <p class="text-black text-xl ml-2">About us.</p>
+            </div>
+            <div class="my-6">
+                KeralaMatrimony is a part of BharatMatrimony - the pioneers of online matrimony service. Today, we are the most trusted Matrimony website by Brand Trust Report. Millions of happy marriages happened and continue to happen through BharatMatrimony. We have been featured in the Limca Book of Records for the highest number of documented marriages online. Besides Internet, we also have a strong offline presence across India with over 140+ matrimony branches! BharatMatrimony is the 1st group to offer 100% mobile verified profiles, reinforcing the trust that members have on us. We have also pioneered the highly personalized matchmaking services - Assisted Service and EliteMatrimony. Our purpose is to build a better Bharat through happy marriages.
+            </div>
+
+        </div>
+        <div class="w-3/12 p-4 ml-5 mr-3 mt-10 mb-10 ">
+            <p class="text-2xl font-black font-semibold mb-12">Help & Support</p>
+            <p class="text-xl font-black font-normal mb-3">24x7 Live help</p>
+            
+            <p class="text-xl font-black  font-normal mb-3 ">
+                Contact us</p>
+            <p class="text-xl font-black font-normal  mb-3">Feedback</p>
+            <p class="text-xl font-black  font-normal mb-3">FAQs</p>
+
+
+
+            <p class="text-2xl font-black font-semibold mb-12 mt-8">Help & Support</p>
+            <p class="text-xl font-black font-normal mb-3">24x7 Live help</p>
+            
+            <p class="text-xl font-black  font-normal mb-3 ">
+                Contact us</p>
+            <p class="text-xl font-black font-normal  mb-3">Feedback</p>
+            <p class="text-xl font-black  font-normal mb-3">FAQs</p>
+
+
+            
+        </div>
+        <div class="w-3/12 p-4 mx-3 mt-10 mb-10">
+            <p class="text-2xl font-black font-semibold mb-12">Help & Support</p>
+            <p class="text-xl font-black font-normal mb-3">24x7 Live help</p>
+            
+            <p class="text-xl font-black  font-normal mb-3 ">
+                Contact us</p>
+            <p class="text-xl font-black font-normal  mb-3">Feedback</p>
+            <p class="text-xl font-black  font-normal mb-3">FAQs</p>
+
+
+
+            <p class="text-2xl font-black font-semibold mb-12 mt-8">Help & Support</p>
+            <p class="text-xl font-black font-normal mb-3">24x7 Live help</p>
+            
+            <p class="text-xl font-black  font-normal mb-3 ">
+                Contact us</p>
+            <p class="text-xl font-black font-normal  mb-3">Feedback</p>
+            <p class="text-xl font-black  font-normal mb-3">FAQs</p>
+
+
+            
+        </div>
+        <div class="w-3/12 p-4 mx-3 mt-10 mb-10">
+            <p class="text-2xl font-black font-semibold mb-12">Help & Support</p>
+            <p class="text-xl font-black font-normal mb-3">24x7 Live help</p>
+            
+            <p class="text-xl font-black  font-normal mb-3 ">
+                Contact us</p>
+            <p class="text-xl font-black font-normal  mb-3">Feedback</p>
+            <p class="text-xl font-black  font-normal mb-3">FAQs</p>
+
+
+
+            <p class="text-2xl font-black font-semibold mb-12 mt-8">Help & Support</p>
+            <p class="text-xl font-black font-normal mb-3">24x7 Live help</p>
+            
+            <p class="text-xl font-black  font-normal mb-3 ">
+                Contact us</p>
+            <p class="text-xl font-black font-normal  mb-3">Feedback</p>
+            <p class="text-xl font-black  font-normal mb-3">FAQs</p>
+
+
+            
+        </div>
+
+    </div>
+
+
+    <div class="px-12 mb-24 border-t-4 border-t-gray-400 border-b-4 border-b-gray-400 mx-12 bg-white flex  mt-5">
+
+<div class="w-6/12 mb-8 mt-3" >
+<p class="text-xl font-light font-black text-center">This website is strictly for matrimonial purpose only and not a dating website.
+    Copyright © 2024 Matrimony.com, the most trusted matrimony brand.</p>
+</div>
+<div class="w-6/12">
+    
+</div>
+    </div>
+    
+
+</div>
+{% block js %}
+
+
+{% endblock %}
+
+{% endblock %}

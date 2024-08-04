@@ -1,0 +1,39 @@
+{% extends 'auth_app/user_home_base.html' %}
+{% load static %}
+
+{% block title %} Home - Matrimony {% endblock %}
+
+{% block main_content %}
+
+<div class="p-2 m-3 ">
+    <div class="grid grid-cols-3 gap-4">
+
+  
+    {% for user_ in users %}
+    
+    <div class="border-2 border-gray-300 p-3 w-[350px] h-[350px] rounded-3xl my-3 hover:cursor-pointer">
+        <div class="flex justify-center">
+            <img class="w-full h-64 px-2" src="{{user_.profile_picture.url}}"/>
+        </div>
+        <p class="my-2 text-2xl font-semibold text-black text-center">{{user_.username}}</p>
+        <p class="my-1 text-2xl font-semibold text-black text-center">{{user_.occupation}}</p>
+    </div>
+    
+    
+    {% endfor %}
+</div>
+    </div>
+
+
+{% endblock %}
+
+
+
+
+{% block js %}
+<script >
+   
+   
+</script>
+
+{% endblock %}

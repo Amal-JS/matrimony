@@ -1,0 +1,36 @@
+{% extends 'auth_app/base.html' %}
+{% load static %}
+
+{% block title %} Admin Login{% endblock %}
+
+{% block content %}
+
+<div class="bg-white flex min-h-[700px] justify-center items-center">
+    <form  method="POST" action="{% url 'admin_login' %}" class="border-2 border-red-500 rounded-2xl p-4">
+        <p class="text-black text-center font-semibold text-xl">Admin Login </p>
+        <div>
+            <input type="text" class="w-full my-3 text-black bg-white text-xl border-2 border-gray-300 p-1 rounded-xl" name="username"  placeholder="Admin Username"/>
+        </div>
+        <div>
+            <input type="password" class="w-full text-black bg-white text-xl border-2 border-gray-300 p-1 rounded-xl" name="password" placeholder="Admin Password"/>
+        </div>
+        
+
+            {% if messages %}
+<div class="p-4 space-y-4 my-3">
+    {% for message in messages %}
+    <div class="rounded-lg p-4 {{ message.tags } my-1}">
+        <p class="text-red-400 text-base">{{ message }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+<div class=" flex justify-center my-2">
+            <button type="submit" class="text-white bg-red-500 p-2 rounded-xl" >Login</button>
+        </div>
+    </form>
+</div>
+
+
+
+{% endblock %}

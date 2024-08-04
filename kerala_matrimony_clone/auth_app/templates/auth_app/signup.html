@@ -1,0 +1,297 @@
+{% extends 'auth_app/base.html' %}
+{% load static %}
+
+{% block title %} Kerala Matrimony - The No. 1 Matrimony Site for Keralas - KeralaMatrimony.com {% endblock %}
+
+{% block content %}
+
+<div>
+    <div class="h-20 border-bottom-2 mb-2 flex mt-5" >
+        <div class="w-6/12 flex items-center px-8 ">
+            <div>
+                <p class="text-light text-small">From Matrimony.com Group</p>
+                <img class="w-48 h-12" src="{% static 'images/icon-full.png' %}">
+            </div>
+        </div>
+        <div class="w-6/12 flex items-center">
+            <p class="text-black text-small font-semibold ml-32 mr-4">Already a member?</p>
+            <button data-modal-target="default-modal" data-modal-toggle="default-modal" class="bg-white border-2 border-red-400 text-small rounded-xl text-red-400 px-2 py-1">LOG IN</button>
+        </div>
+    </div>
+ 
+    <div class="max-w-[400px] rounded-3xl bg-green-500 h-[400px] pt-2 absolute top-40 right-48  z-10" >
+        <p class="text-white text-2xl text-center">Create a Matrimony Profile</p>
+        <div class="w-full bg-white h-full shadow-2xl shadow-2xl rounded-3xl mt-3 p-3">
+            <p class="font-semibold font-black text-center mt-4 text-2xl">Find your perfect match</p>
+            <div class="mx-3 my-3 h-9/12">
+                <select id="registerSelect" class="bg-white text-black font-normal w-full text-start py-3 rounded-xl border-2 border-gray-300 px-3">
+                   
+                    <option value=""> Select Profile</option>
+                    <option value="Myself Male" >Myself Male</option>
+                    <option value="Myself Female" >Myself Female</option>
+                    <option value="Son"> Son </option>
+                    <option value="Daughter"> Daughter</option>
+                    <option value="Sister"> Sister</option>
+                    <option value="Friend">Friend</option>
+
+                </select>
+                <input class="w-full px-3 text-black mt-4 h-12  border-2 border-gray-400 rounded-xl" type="text" id="name" placeholder="Enter Name"/>
+                <input class="w-full px-3 text-black mt-4 h-12 border-2 border-gray-400 rounded-xl" type="number" id="phone" placeholder="Enter Phone"/>
+                <p class="text-red-500 text-center font-bold my-3 hidden" id="registerFillValues">Fill all form fields</p>
+                <p class="text-red-500 text-center font-bold hidden" id="registerError">Invalid Credentials.</p>
+                <button id='registerBtn' class="w-full bg-[#f48323] text-white p-3 my-4 rounded-2xl">REGISTER FREE</button>
+            </div>
+            <p class="text-center text-[11px] mt-4 ">*By clicking register free, I agree to the T&C and Privacy Policy</p>
+        </div>
+    </div>
+    <div class="bg-white w-full ">
+        <div class=" px-48 mt-14 w-full">
+            <p class="text-4xl text-black  font-semibold text-start">The biggest and most trusted<br>
+                matrimony service for Malayalees!</p>
+
+            <p class="text-xl text-black text-start">Now find matches based on your hobbies & interests</p>
+        </div>
+
+        <div class="w-full mt-24 px-2">
+            <div class="w-full h-64 flex">
+                <div class="w-2/12 rounded-3xl mx-2">
+                    <img class="w-full h-64 rounded-2xl drop-shadow-xl" src="{% static 'images/bride-groom-signup.jpg' %}">
+                </div>
+                <div class="w-2/12 rounded-3xl -mt-10">
+                    <img class="w-full h-64 rounded-2xl drop-shadow-xl" src="{% static 'images/bride-groom-signup.jpg' %}">
+                </div>
+                <div class="w-2/12 rounded-3xl mx-2">
+                    <img class="w-full h-64 rounded-2xl drop-shadow-xl" src="{% static 'images/bride-groom-signup.jpg' %}">
+                </div>
+                <div class="w-2/12 rounded-3xl -mt-10">
+                    <img class="w-full h-64 rounded-2xl drop-shadow-xl" src="{% static 'images/bride-groom-signup.jpg' %}">
+                </div>
+                <div class="w-2/12 rounded-3xl mx-2">
+                    <img class="w-full h-64 rounded-2xl drop-shadow-xl" src="{% static 'images/bride-groom-signup.jpg' %}">
+                </div>
+                <div class="w-2/12 rounded-3xl -mt-10">
+                    <img class="w-full h-64 rounded-2xl drop-shadow-xl" src="{% static 'images/bride-groom-signup.jpg' %}">
+                </div>
+            </div>
+            <div class="w-full h-64 flex">
+                <div class="w-2/12 rounded-3xl mx-2">
+                    <img class="w-full h-56 rounded-2xl drop-shadow-xl" src="{% static 'images/bride-groom-signup.jpg' %}">
+                </div>
+                <div class="w-2/12 rounded-3xl -mt-10">
+                    <img class="w-full h-64 rounded-2xl drop-shadow-xl" src="{% static 'images/bride-groom-signup.jpg' %}">
+                </div>
+                <div class="w-2/12 rounded-3xl mx-2">
+                    <img class="w-full h-56  rounded-2xl drop-shadow-xl" src="{% static 'images/bride-groom-signup.jpg' %}">
+                </div>
+                <div class="w-2/12 rounded-3xl -mt-10">
+                    <img class="w-full h-64 rounded-2xl drop-shadow-xl" src="{% static 'images/bride-groom-signup.jpg' %}">
+                </div>
+                <div class="w-2/12 rounded-3xl mx-2">
+                    <img class="w-full h-56  rounded-2xl drop-shadow-xl" src="{% static 'images/bride-groom-signup.jpg' %}">
+                </div>
+                <div class="w-2/12 rounded-3xl -mt-10">
+                    <img class="w-full h-64 rounded-2xl drop-shadow-xl" src="{% static 'images/bride-groom-signup.jpg' %}">
+                </div>
+            </div>
+        </div>
+
+        <div class="flex mb-5">
+            <div class="w-4/12 flex justify-center">
+                <img class="w-12 h-12" src="{% static 'images/signup_100%.svg' %}"/>
+                <div>
+                    <p class="text-start  text-black font-bold text-xl">
+                        100%
+    
+                    </p>
+                    <p class="text-start font-normal text-small">
+                        Mobile-verified profiles
+                    </p>
+                </div>
+               
+            </div>
+            <div class="w-4/12 flex justify-center">
+                <img class="w-12 h-12" src="{% static 'images/4_crores+.svg' %}"/>
+                <div>
+                    <p class="text-start  text-black font-bold text-xl">
+                        4 Crores+
+                       
+                        
+    
+                    </p>
+                    <p class="text-start font-normal text-small">
+                        Customers served
+                    </p>
+                </div>
+               
+            </div>
+            <div class="w-4/12 flex justify-center">
+                <img class="w-12 h-12" src="{% static 'images/23_years.svg' %}"/>
+                <div>
+                    <p class="text-start  text-black font-bold text-xl">
+                        23 Years
+                   
+    
+                    </p>
+                    <p class="text-start font-normal text-small">
+                        of successful matchmaking
+                    </p>
+                </div>
+               
+            </div>
+        </div>
+
+        <div class="bg-white my-10">
+            <p class="text-[14px] font-light text-center">This website is strictly for matrimonial purpose only and not a dating website. Copyright © 2024. All rights reserve</p>
+        </div>
+    </div>
+
+
+    
+      
+      <!-- Main modal -->
+      <div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full" style="z-index:100;">
+          <div class="relative p-4 w-full max-w-2xl max-h-full">
+              <!-- Modal content -->
+              <div class="relative bg-white rounded-lg shadow w-[300px] ">
+                  <!-- Modal header -->
+                  <div class="flex items-center justify-center p-4 md:p-5 border-b rounded-t dark:border-gray-600 w-[300px] ">
+                     <div class="flex">
+
+                    
+                      <p class="text-black text-center text-2xl font-semibold px-48">Login</p>
+                      <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 white" data-modal-hide="default-modal">
+                          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                          </svg>
+                          <!-- <span class="sr-only">Close modal</span> -->
+                      </button>
+                    </div>
+                  </div>
+                  <!-- Modal body -->
+                  <div class="p-4 md:p-5 space-y-4">
+                    <form id="loginForm" method="POST" action="{% url 'login_user' %}">
+                    <input type="text" class="hidden" name="csrfmiddlewaretoken" id="csrfmiddlewaretoken"/>
+                    <input class="w-full px-3 text-black mt-4 h-12  border-2 border-gray-400 rounded-xl" type="text" id="loginName" name='username' placeholder="Enter Name"/>
+                    <input class="w-full px-3 text-black mt-4 h-12 border-2 border-gray-400 rounded-xl" type="text" id="loginPassword" name='password' placeholder="Enter Password"/>
+                <p class="text-red-500 text-center font-bold hidden" id="loginFillValues">Fill all form fields</p>
+                <p class="text-red-500 text-center font-bold hidden" id="loginError">Invalid Credentials.</p>
+                <button type='submit' id='loginBtn' class="w-full bg-[#f48323] text-white p-3 my-4 rounded-2xl">Login</button>
+            </form>
+                  </div>
+                 
+              </div>
+          </div>
+      </div>
+</div>
+
+
+<script>
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+
+
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+
+    console.log('fully loaded');
+    const loginBtn = document.querySelector('#loginBtn');
+    const registerBtn  = document.querySelector('#registerBtn');
+
+    loginBtn.addEventListener('click', (evt) => {
+        const fillUpValuesPara = document.querySelector('#loginFillValues');
+        const csrfmiddlewaretoken = document.querySelector('#csrfmiddlewaretoken');
+        const loginError = document.querySelector('#loginError');
+        fillUpValuesPara.classList.add('hidden');
+        loginError.classList.add('hidden');
+
+        const loginName = document.querySelector('#loginName').value;
+        const loginPassword = document.querySelector('#loginPassword').value;
+
+        if (loginName === '' || loginPassword === '') {
+            fillUpValuesPara.classList.remove('hidden');
+            evt.preventDefault();
+            return;
+        }
+
+        console.log('Login Name:', loginName);
+        console.log('Login Password:', loginPassword);
+        loginError.classList.add('hidden')
+        try {
+            const formData = new FormData();
+            formData.append('username', loginName);
+            formData.append('password', loginPassword);
+
+            const response = fetch('http://localhost:8000/check_values/', {
+                method: 'POST',
+                body: formData,
+                credentials: 'include',
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken') // Include CSRF token in headers
+                }
+            }).then(res => res.json()).then(data=>{
+                if (data.isValid) {
+                console.log('Login successful');
+                document.querySelector('#loginForm').submit(); // Submit the form
+            } else {
+                loginError.classList.remove('hidden');
+                console.log('Invalid credentials');
+            }
+            })
+            
+
+            
+
+        } catch (error) {
+            console.error('Error:', error);
+            loginError.classList.remove('hidden');
+        }
+
+        evt.preventDefault(); // Prevent default form submission if needed
+    });
+
+
+
+    registerBtn.addEventListener('click', (evt) => {
+        evt.preventDefault();
+        const selectValue = document.querySelector('#registerSelect').value;
+        const fillUpValuesPara = document.querySelector('#registerFillValues');
+        fillUpValuesPara.classList.add('hidden');
+        const loginName = document.querySelector('#name').value;
+        const loginPassword = document.querySelector('#phone').value;
+
+        if (loginName === '' || loginPassword === '' || selectValue === '') {
+            fillUpValuesPara.classList.remove('hidden');
+            return;
+        }
+
+        const userData = {
+            username: loginName,
+            phone: loginPassword,
+            looking_for: selectValue
+        };
+        console.log(userData);
+        localStorage.setItem('newUserData', JSON.stringify(userData));
+        location.href = '/register2';
+    });
+
+});
+
+</script>
+
+{% endblock %}

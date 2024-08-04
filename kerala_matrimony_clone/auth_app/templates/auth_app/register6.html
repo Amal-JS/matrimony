@@ -1,0 +1,198 @@
+
+
+{% extends 'auth_app/base.html' %}
+{% load static %}
+
+{% block title %} Kerala Matrimony - The No. 1 Matrimony Site for Keralas - KeralaMatrimony.com {% endblock %}
+
+{% block content %}
+
+<div>
+    
+    <div class="h-20 border-bottom-2 mb-2 flex mt-5" >
+        <div class="w-6/12 flex items-center px-8 ">
+            <div>
+                <p class="text-light text-small">From Matrimony.com Group</p>
+                <img class="w-48 h-12" src="{% static 'images/icon-full.png' %}">
+            </div>
+        </div>
+       
+    </div>
+ 
+    
+    <div class="bg-white w-full mt-8 flex">
+        
+
+        <div class="w-2/4 h-11/12 mx-3">
+            <img src="{% static 'images/register_2.png' %}"/>
+        </div>
+
+        <div class="w-2/4 h-11/12 mx-3">
+            <p class="text-2xl text-black mb-10">Add a nice profile picture</p>
+
+
+                <label class=" text-black font-light text-2xl">Try to add a recent one</label>
+             <br>
+            <input type="file" class="hidden" id="profilePicture"/>
+            <button class="bg-white border-red-400 border-2  p-2 mt-4 rounded-xl " id="trigger">Select to add.</button>
+
+
+            <img src="" class="w-64 h-64 my-8 hidden" id="renderShowPic"/>
+                <p class="text-red-500 text-start my-3 font-bold hidden" id="registerFillValues">Fill all form fields</p>
+            <p class="text-red-500 text-center font-bold hidden" id="registerError">Invalid Credentials.</p>
+            <div  class="">
+
+                <button id='loginBtn' class="w-2/4 bg-[#f48323] text-white p-3 my-4 rounded-2xl mx-auto">Complete</button>
+            </div>
+            </div>
+           
+            
+            
+
+        
+
+        </div>
+
+        
+    </div>
+
+    <div class="bg-white my-10">
+        <p class="text-2xl font-light text-center">Copyright © 2024. All rights reserved.</p>
+    </div>
+    
+      
+     
+</div>
+
+
+<script>document.addEventListener('DOMContentLoaded', () => {
+
+
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+    const loginBtn = document.querySelector('#loginBtn');
+    const trigger = document.querySelector('#trigger');
+    const tellUsAboutYourself = document.querySelector('#profilePicture');
+    const renderShowPic = document.querySelector('#renderShowPic');
+
+    // Retrieve stored user data from localStorage
+    const storedUserData = localStorage.getItem('newUserData');
+    let userData = {};
+
+    if (storedUserData) {
+        try {
+            userData = JSON.parse(storedUserData);
+            console.log('User data retrieved from localStorage', userData);
+
+            // If there's a stored profile picture, display it
+            if (userData.profilePicture) {
+                renderShowPic.src = userData.profilePicture;
+                renderShowPic.classList.remove('hidden');
+            }
+        } catch (error) {
+            console.error('Error parsing JSON from localStorage:', error);
+        }
+    }else{
+        location.href='/';
+    }
+
+    // Trigger file input click
+    trigger.addEventListener('click', () => {
+        tellUsAboutYourself.click();
+    });
+
+    // Handle file input change
+    tellUsAboutYourself.addEventListener('change', (evt) => {
+        evt.preventDefault();
+        const file = tellUsAboutYourself.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const base64String = e.target.result;
+
+                // Show the image in the div
+                renderShowPic.src = base64String;
+                renderShowPic.classList.remove('hidden');
+
+                // Update userData with the profile picture
+                userData.profilePicture = base64String;
+
+                // Save the updated user data back to localStorage
+                localStorage.setItem('newUserData', JSON.stringify(userData));
+            };
+
+            reader.readAsDataURL(file);
+        }
+    });
+
+    loginBtn.addEventListener('click', (evt) => {
+        evt.preventDefault();
+        const fillUpValuesPara = document.querySelector('#registerFillValues');
+        fillUpValuesPara.classList.add('hidden');
+
+        // Ensure the profile picture is uploaded
+        if (!userData.profilePicture) {
+            fillUpValuesPara.classList.remove('hidden');
+            return;
+        }
+
+        console.log('User data to be sent:', userData);
+
+        const csrftoken = getCookie('csrftoken');
+        const formData = new FormData();
+                formData.set('csrfmiddlewaretoken',getCookie('csrftoken'))
+                // Append user data to FormData
+        for (const key in userData) {
+            if (userData.hasOwnProperty(key)) {
+                formData.append(key, userData[key]);
+            }
+        }
+                console.log(Object.fromEntries(formData))
+                fetch('http://localhost:8000/create_user_account/', {
+                    method: 'POST',
+                    body: formData,
+                    credentials: 'include', // Include credentials (cookies)
+    headers: {
+        'X-CSRFToken': getCookie('csrftoken') // Include CSRF token in headers
+    },
+                    // credentials: 'same-origin',
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.isCreated){
+                        alert('Created successfully.Log in to continue')
+                        location.href='/'
+                        localStorage.removeItem('newUserData')
+                    }else{
+                        alert('Please try again after some time.')
+                        alert(data.error)
+                        localStorage.removeItem('newUserData')
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        
+        // Redirect to the next page if needed
+        // location.href = '/register5';
+    });
+});
+</script>
+
+{% endblock %}

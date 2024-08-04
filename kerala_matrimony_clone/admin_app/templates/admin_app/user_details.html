@@ -1,0 +1,143 @@
+{% extends 'auth_app/base.html' %}
+{% load static %}
+
+{% block title %} Admin Home{% endblock %}
+
+{% block content %}
+
+
+<h1 class="text-center text-3xl my-8 "> User Full Details</h1>
+<div class="flex pr-24 justify-end">
+
+    <a class="bg-red-500 text-white rounded-2xl p-3 w-24 text-center" href="{% url 'admin_logout' %}">Logout</a>
+</div>
+
+<div class=" w-full px-24 my-10">
+    <div class="flex mt-4 border-2 border-gray-200">
+        <div class="w-1/4 flex items-center">
+            <p class="text-2xl text-black font-light mx-3 text-center">Looking For</p>
+        </div>
+        <div class="w-3/4 border-l-2 border-l-gray-200 px-3 py-2">
+            <p class="text-black font-semibold text-2xl">{{user.looking_for}}</p>
+        </div>
+    </div>
+
+
+    <div class="flex mt-4 border-2 border-gray-200">
+        <div class="w-1/4 flex items-center">
+            <p class="text-2xl text-black font-light mx-3 text-center">Username</p>
+        </div>
+        <div class="w-3/4 border-l-2 border-l-gray-200 px-3 py-2">
+          
+            <p class="text-black font-semibold text-2xl">{{user.username}}</p>
+        </div>
+    </div>
+    
+    <div class="flex mt-4 border-2 border-gray-200">
+        <div class="w-1/4 flex items-center">
+            <p class="text-2xl text-black font-light mx-3 text-center">Phone number</p>
+        </div>
+        <div class="w-3/4 border-l-2 border-l-gray-200 px-3 py-2">
+            
+            <p class="text-black font-semibold text-2xl">{{user.phone}}</p>
+        </div>
+    </div>
+    <div class="flex mt-4 border-2 border-gray-200">
+        <div class="w-1/4 flex items-center">
+            <p class="text-2xl text-black font-light mx-3 text-center">Date of birth</p>
+        </div>
+        <div class="w-3/4 border-l-2 border-l-gray-200 px-3 py-2">
+            
+            <p class="text-black font-semibold text-2xl">{{user.dob}}</p>                   </div>
+    </div>
+    <div class="flex mt-4 border-2 border-gray-200">
+        <div class="w-1/4 flex items-center">
+            <p class="text-2xl text-black font-light mx-3 text-center">Religion</p>
+        </div>
+        <div class="w-3/4 border-l-2 border-l-gray-200 px-3 py-2">
+            
+            <p class="text-black font-semibold text-2xl">{{user.religion}}</p>
+        </div>
+    </div>
+    <div class="flex mt-4 border-2 border-gray-200">
+        <div class="w-1/4 flex items-center">
+            <p class="text-2xl text-black font-light mx-3 text-center">Mother Tongue </p>
+        </div>
+        <div class="w-3/4 border-l-2 border-l-gray-200 px-3 py-2">
+            
+            <p class="text-black font-semibold text-2xl">{{user.language}}</p>
+        </div>
+    </div>
+    <div class="flex mt-4 border-2 border-gray-200">
+        <div class="w-1/4 flex items-center">
+            <p class="text-2xl text-black font-light mx-3 text-center">Email Id </p>
+        </div>
+        <div class="w-3/4 border-l-2 border-l-gray-200 px-3 py-2">
+            
+            <p class="text-black font-semibold text-2xl">{{user.email}}</p>
+        </div>
+    </div>
+   
+    <div class="flex mt-4 border-2 border-gray-200">
+        <div class="w-1/4 flex items-center">
+            <p class="text-2xl text-black font-light mx-3 text-center">Division</p>
+        </div>
+        <div class="w-3/4 border-l-2 border-l-gray-200 px-3 py-2">
+            
+            <p class="text-black font-semibold text-2xl">{{user.division}}</p>
+        </div>
+    </div>
+    <div class="flex mt-4 border-2 border-gray-200">
+        <div class="w-1/4 flex items-center">
+            <p class="text-2xl text-black font-light mx-3 text-center">Caste</p>
+        </div>
+        <div class="w-3/4 border-l-2 border-l-gray-200 px-3 py-2">
+            
+            <p class="text-black font-semibold text-2xl">{{user.caste}}</p>        </div>
+    </div>
+    <div class="flex mt-4 border-2 border-gray-200">
+        <div class="w-1/4 flex items-center">
+            <p class="text-2xl text-black font-light mx-3 text-center">Educational Qualification</p>
+        </div>
+        <div class="w-3/4 border-l-2 border-l-gray-200 px-3 py-2">
+            
+            <p class="text-black font-semibold text-2xl">{{user.educational_qualification}}</p>        </div>
+    </div>
+    <div class="flex mt-4 border-2 border-gray-200">
+        <div class="w-1/4 flex items-center">
+            <p class="text-2xl text-black font-light mx-3 text-center">EmployedIn</p>
+        </div>
+        <div class="w-3/4 border-l-2 border-l-gray-200 px-3 py-2">
+            
+            <p class="text-black font-semibold text-2xl">{{user.employed_in}}</p>
+        </div>
+    </div>
+    <div class="flex mt-4 border-2 border-gray-200">
+        <div class="w-1/4 flex items-center">
+            <p class="text-2xl text-black font-light mx-3 text-center">Occupation</p>
+        </div>
+        <div class="w-3/4 border-l-2 border-l-gray-200 px-3 py-2">
+            <p class="text-black font-semibold text-2xl">{{user.occupation}}</p>    
+          
+        </div>
+    </div>
+    <input type="text" value="{{oldData.id}}" id="dataId" class="hidden">
+    <div class="flex mt-4 border-2 border-gray-200">
+        <div class="w-1/4 flex items-center">
+            <p class="text-2xl text-black font-light mx-3 text-center">Annual Income</p>
+        </div>
+        <div class="w-3/4 border-l-2 border-l-gray-200 px-3 py-2">
+            
+            <p class="text-black font-semibold text-2xl">{{user.annual_income}}</p>        </div>
+    </div>
+    <div class="flex mt-4 border-2 border-gray-200">
+        <div class="w-1/4 flex items-center">
+            <p class="text-2xl text-black font-light mx-3 text-center">About you</p>
+        </div>
+        <div class="w-3/4 border-l-2 border-l-gray-200 px-3 py-2">
+            
+            <p class="text-black font-semibold text-2xl">{{user.tell_us_about_yourself}}</p>        </div>
+    </div>
+</div>
+
+{% endblock %}

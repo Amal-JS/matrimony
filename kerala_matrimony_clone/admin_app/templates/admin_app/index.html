@@ -1,0 +1,45 @@
+{% extends 'auth_app/base.html' %}
+{% load static %}
+
+{% block title %} Admin Home{% endblock %}
+
+{% block content %}
+
+
+<h1 class="text-center text-3xl my-8 "> Admin Home</h1>
+<div class="flex pr-24 justify-end">
+
+    <a class="bg-red-500 text-white rounded-2xl p-3 w-24 text-center" href="{% url 'admin_logout' %}">Logout</a>
+</div>
+
+<p class="text-black text-2xl px-20">User Data</p>
+<div class="px-16 py-3">
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for user in users %}
+            <tr>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.phone}}</td>
+                <td class="flex justify-center"><a href="{% url 'user_details' user.id %}" class="border-2 bg-black text-white text-xl p-1 rounded-xl">Click to see more data</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        
+    </table>
+</div>
+
+<script>
+    	
+new DataTable('#example');
+</script>
+{% endblock %}
