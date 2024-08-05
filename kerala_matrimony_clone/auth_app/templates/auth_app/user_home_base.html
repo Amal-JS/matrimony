@@ -41,7 +41,7 @@
 
 
             <div class="flex items-center mx-2">
-                <img src="{% if request.user.profile_picture %}{{ request.user.profile_picture.url }}{% else %}{% static '/images/default_user.jpeg' %}{% endif %}" 
+                <img class="w-20 h-20" style="border-radius: 50%;" src="{% if request.user.profile_picture %}{{ request.user.profile_picture.url }}{% else %}{% static '/images/default_user.jpeg' %}{% endif %}" 
            />
             </div>
             <a class="bg-[#f48323] text-white rounded-2xl p-3 w-24 text-center" href="{% url 'logout_user' %}">Logout</a>
